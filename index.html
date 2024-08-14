@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional One-Pager</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            background-color: #f4f4f4;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Helvetica Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: white;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        #hero {
+            margin-top: 80px;
+            /* Adjusted for fixed header */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin: 0;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin: 10px 0 20px;
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero-content .btn {
+            background-color: #FF5722;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .hero-content .btn:hover {
+            background-color: #e64a19;
+        }
+
+        /* Services Section */
+        #services {
+            padding: 80px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        #services h2 {
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        #services h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #FF5722;
+        }
+
+        .service-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            max-width: 30%;
+            min-width: 280px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            padding: 80px 20px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        #portfolio h2 {
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        #portfolio h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #FF5722;
+        }
+
+        .portfolio-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            margin: 10px;
+            flex: 1;
+            max-width: 30%;
+            min-width: 280px;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item p {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* About Section */
+        #about {
+            padding: 80px 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        #about h2 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        #about h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #FF5722;
+        }
+
+        #about p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        #contact h2 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        #contact h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #FF5722;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        form button {
+            background-color: #FF5722;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        form button:hover {
+            background-color: #e64a19;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTez5i5nl52v1WOm3cfGrqTIc7IkABxQIaoDw&s" alt="Logo" class="logo">
+        <nav class="nav">
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Welcome to Our Professional Service</h1>
+            <p>Your one-stop solution for high-quality web development, design, and SEO.</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="card">
+                <img src="https://www.hubspot.com/hubfs/web-development.webp" alt="Web Development">
+                <h3>Web Development</h3>
+                <p>Building modern and responsive websites.</p>
+            </div>
+            <div class="card">
+                <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/IsGraphic_DesignAGoodCareerb.jpg" alt="Graphic Design">
+                <h3>Graphic Design</h3>
+                <p>Creating visually stunning designs.</p>
+            </div>
+            <div class="card">
+                <img src="https://i0.wp.com/elatre.com/wp-content/uploads/2024/03/Mastering-SEO_-Tips-to-Become-a-Pro-SEO-Optimizer.jpg?fit=900%2C410&ssl=1" alt="SEO Optimization">
+                <h3>SEO Optimization</h3>
+                <p>Improving your site's search engine ranking.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2>Our Work</h2>
+        <div class="portfolio-items">
+            <div class="portfolio-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9HHm9VnANw43-s24OUQLsjGUtDVtye1hwCA&s" alt="Project 1">
+                <p>Ecommerce Website</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://lvivity.com/wp-content/uploads/2021/06/hospital-CRM.jpg" alt="Project 2">
+                <p>Hospital management System</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://static.vecteezy.com/system/resources/previews/006/431/631/original/online-food-delivery-website-design-user-interface-application-free-vector.jpg" alt="Project 3">
+                <p>Food Delivery App</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are a team of professionals dedicated to delivering high-quality services to our clients. Additionally, we
+            partner with <a href="https://www.digibizz.com" target="_blank" style="color: #FF5722;">DigiBizz</a>, a
+            leading website providing digital education to help you stay ahead in the digital world.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Professional Service. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
